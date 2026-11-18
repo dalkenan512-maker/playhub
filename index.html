@@ -3,488 +3,245 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="PlayHub - Oyun rehberleri, ipuçları, taktikler ve keşif dünyası.">
-<title>PlayHub | Oyun Dünyasına Hoş Geldin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="PlayHub Minecraft Ansiklopedisi: rehberler, yaratıklar, eşyalar, biyomlar, tarifler ve taktikler.">
+<title>PlayHub | Minecraft Ansiklopedisi</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg: #080b14;
-  --panel: #111827;
-  --blue: #00c8ff;
-  --purple: #925cff;
-  --text: #f4f7ff;
-  --muted: #9ba8bd;
+  --bg:#0b1420;
+  --panel:#142536;
+  --panel2:#1b3041;
+  --green:#68f29a;
+  --cyan:#50d9f4;
+  --purple:#a88aff;
+  --text:#f3f8fc;
+  --muted:#b1c3d1;
+  --line:#355267;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 18px;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
   background:
-    radial-gradient(circle at 15% 15%, #123b6533, transparent 35%),
-    radial-gradient(circle at 85% 35%, #652a9430, transparent 35%);
+    radial-gradient(ellipse at 10% 5%,#1d674b55,transparent 35%),
+    radial-gradient(ellipse at 90% 15%,#354b9250,transparent 35%),
+    var(--bg);
+  color:var(--text);
+  font-family:'Rajdhani',sans-serif;
+  font-size:18px;
 }
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
 
-a { color: inherit; text-decoration: none; }
-
-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: #080b14eF;
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid #25334b;
+header{
+  position:sticky;top:0;z-index:10;
+  background:#0b1420ed;
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--line);
 }
-
-.nav {
-  max-width: 1180px;
-  margin: auto;
-  padding: 17px 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
+.nav{
+  max-width:1250px;margin:auto;padding:15px 22px;
+  display:flex;justify-content:space-between;align-items:center;gap:15px;
 }
-
-.logo {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 25px;
-  font-weight: 800;
-  letter-spacing: 1px;
+.logo{
+  font:800 24px 'Orbitron',sans-serif;
+  letter-spacing:1px;
 }
+.logo span{color:var(--green)}
+.navlinks{display:flex;gap:22px;flex-wrap:wrap}
+.navlinks a{color:var(--muted);font-weight:700}
+.navlinks a:hover{color:var(--green)}
 
-.logo span { color: var(--blue); }
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 26px;
+.hero{
+  max-width:1250px;margin:auto;padding:65px 22px 35px;
 }
-
-.nav-links a {
-  color: #c5d0e2;
-  font-weight: 600;
-  transition: .2s;
-}
-
-.nav-links a:hover { color: var(--blue); }
-
-.hero {
-  max-width: 1180px;
-  margin: auto;
-  padding: 105px 22px 85px;
-  text-align: center;
-}
-
-.tag {
-  display: inline-block;
-  padding: 8px 17px;
-  border: 1px solid #00c8ff66;
-  border-radius: 30px;
-  color: var(--blue);
-  background: #00c8ff0c;
-  font-weight: 700;
-  letter-spacing: 2px;
-  font-size: 14px;
-}
-
-.hero h1 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(34px, 6vw, 65px);
-  line-height: 1.2;
-  margin: 25px 0 18px;
-}
-
-.gradient {
-  background: linear-gradient(90deg, var(--blue), #8d65ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.hero p {
-  max-width: 650px;
-  margin: auto;
-  color: var(--muted);
-  font-size: 21px;
-  line-height: 1.6;
-}
-
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 13px;
-  margin-top: 32px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 13px 25px;
-  border-radius: 9px;
-  font-weight: 700;
-  font-size: 18px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: .25s;
-  font-family: inherit;
-}
-
-.btn-primary {
-  color: #06111b;
-  background: linear-gradient(100deg, var(--blue), #7c6cff);
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px #00c8ff40;
-}
-
-.btn-outline {
-  border-color: #45536d;
-  background: #ffffff08;
-  color: white;
-}
-
-.btn-outline:hover {
-  border-color: var(--blue);
-  color: var(--blue);
-}
-
-.section {
-  max-width: 1180px;
-  margin: auto;
-  padding: 35px 22px 75px;
-}
-
-.section-heading {
-  margin-bottom: 28px;
-}
-
-.section-heading small {
-  color: var(--blue);
-  letter-spacing: 3px;
-  font-weight: 700;
-}
-
-.section-heading h2 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(25px, 4vw, 36px);
-  margin-top: 9px;
-}
-
-.section-heading p {
-  color: var(--muted);
-  margin-top: 8px;
-}
-
-.search-area {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 22px;
-}
-
-.search-area input {
-  flex: 1;
-  min-width: 220px;
-  padding: 14px 17px;
-  color: white;
-  background: #111827;
-  border: 1px solid #34425c;
-  border-radius: 9px;
-  outline: none;
-  font: inherit;
-}
-
-.search-area input:focus { border-color: var(--blue); }
-
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-bottom: 28px;
-}
-
-.filter {
-  background: #111827;
-  color: #c4d0e3;
-  border: 1px solid #34425c;
-  padding: 8px 17px;
-  border-radius: 30px;
-  cursor: pointer;
-  font: inherit;
-  font-weight: 700;
-}
-
-.filter.active, .filter:hover {
-  background: #00c8ff18;
-  color: var(--blue);
-  border-color: var(--blue);
-}
-
-.games {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.game-card {
-  background: linear-gradient(145deg, #141e31, #0d1320);
-  border: 1px solid #283852;
-  border-radius: 17px;
-  overflow: hidden;
-  transition: .25s;
-}
-
-.game-card:hover {
-  transform: translateY(-5px);
-  border-color: #00c8ff99;
-  box-shadow: 0 15px 40px #0006;
-}
-
-.game-art {
-  height: 205px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.minecraft-art {
+.hero-box{
+  min-height:390px;padding:45px;
+  border:1px solid #568c76;
+  border-radius:24px;
+  overflow:hidden;
   background:
-    linear-gradient(180deg, #75c8f5 0%, #b5e6ff 48%, #5b9b43 49%, #244d2b 100%);
+    linear-gradient(90deg,#09271feF 0%,#102d27d9 52%,#102d2740 100%),
+    linear-gradient(140deg,#78c9e7,#478b51 50%,#1e3b2c);
+  display:flex;align-items:center;
+  position:relative;
+}
+.hero-box:after{
+  content:"🌲  🏔️  🌳";
+  position:absolute;right:4%;bottom:8%;
+  font-size:clamp(55px,10vw,115px);
+  opacity:.8;
+}
+.hero-text{position:relative;z-index:1;max-width:680px}
+.eyebrow{
+  color:var(--green);font-weight:700;
+  letter-spacing:3px;font-size:14px;
+}
+h1,h2,h3{font-family:'Orbitron',sans-serif}
+.hero h1{
+  font-size:clamp(34px,6vw,62px);
+  line-height:1.15;margin:18px 0;
+}
+.gradient{
+  background:linear-gradient(90deg,#80ffac,#4ddcf4);
+  color:transparent;background-clip:text;
+}
+.hero p{font-size:21px;color:#e0f3e9;line-height:1.55}
+.btn{
+  display:inline-block;border:0;border-radius:9px;
+  padding:12px 21px;margin-top:20px;
+  background:linear-gradient(100deg,#68f29a,#50d9f4);
+  color:#092018;font-weight:800;cursor:pointer;
+  transition:.2s;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px #50d9f455}
+.btn.secondary{
+  background:#21384b;color:white;border:1px solid #52748b;
+  margin-left:8px;
 }
 
-.minecraft-art::before {
-  content: "";
-  position: absolute;
-  width: 180px;
-  height: 100px;
-  bottom: 0;
-  left: 0;
-  background: repeating-linear-gradient(90deg, #427a35 0 45px, #315e2b 45px 90px);
-  clip-path: polygon(0 20%, 30% 20%, 30% 0, 65% 0, 65% 40%, 100% 40%, 100% 100%, 0 100%);
+.wrap{max-width:1250px;margin:auto;padding:25px 22px 65px}
+.section-head{margin-bottom:24px}
+.section-head small{color:var(--green);letter-spacing:3px;font-weight:700}
+.section-head h2{font-size:clamp(24px,4vw,35px);margin:8px 0}
+.section-head p{color:var(--muted)}
+
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:13px;margin:25px 0;
 }
-
-.minecraft-art::after {
-  content: "MINECRAFT";
-  position: absolute;
-  color: white;
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(23px, 4vw, 36px);
-  font-weight: 800;
-  text-shadow: 3px 4px 0 #273c24, 0 0 15px #0008;
-  transform: rotate(-4deg);
+.stat{
+  background:linear-gradient(145deg,#1c3940,#17283d);
+  border:1px solid var(--line);border-radius:13px;
+  padding:18px;text-align:center;
 }
+.stat strong{display:block;font:700 25px 'Orbitron',sans-serif;color:var(--green)}
+.stat span{color:var(--muted)}
 
-.gta-art {
-  background:
-    radial-gradient(circle at 50% 45%, #ff9c57, transparent 28%),
-    linear-gradient(140deg, #401b61, #a33b68 55%, #17182f);
+.video-box{
+  border:1px solid #527d70;border-radius:18px;
+  padding:18px;background:linear-gradient(140deg,#183d36,#18283f);
 }
-
-.gta-art::after {
-  content: "GTA VI";
-  font-family: 'Orbitron', sans-serif;
-  color: white;
-  font-size: clamp(34px, 6vw, 55px);
-  font-weight: 800;
-  text-shadow: 3px 4px 0 #301333, 0 0 22px #ffb2d0;
+.video-frame{
+  position:relative;width:100%;aspect-ratio:16/9;
+  background:#05090d;border-radius:12px;overflow:hidden;
 }
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-box p{color:var(--muted);margin-top:12px}
 
-.game-content { padding: 22px; }
-
-.game-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
+.search{
+  width:100%;padding:16px 18px;
+  border-radius:11px;border:1px solid #52748b;
+  background:#122436;color:white;outline:none;
+  margin:8px 0 18px;
 }
-
-.game-top h3 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 21px;
+.search:focus{border-color:var(--green)}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:25px}
+.filter{
+  border:1px solid #476174;background:#15283a;
+  color:#d7e6ee;border-radius:30px;padding:8px 15px;
+  cursor:pointer;font-weight:700;
 }
-
-.status {
-  font-size: 13px;
-  padding: 5px 10px;
-  border-radius: 20px;
-  background: #00c8781c;
-  color: #56e7a6;
-  border: 1px solid #00c87855;
-  white-space: nowrap;
+.filter.active,.filter:hover{
+  color:#071b12;background:var(--green);border-color:var(--green);
 }
-
-.status.soon {
-  color: #ffc56d;
-  background: #ffb52b18;
-  border-color: #ffb52b55;
+.cards{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:17px;
 }
-
-.game-content p {
-  color: var(--muted);
-  line-height: 1.5;
-  min-height: 55px;
-  margin-bottom: 17px;
+.card{
+  background:linear-gradient(145deg,#1a3041,#122233);
+  border:1px solid #38566b;border-radius:15px;
+  overflow:hidden;transition:.22s;
 }
-
-.game-content .btn { width: 100%; text-align: center; }
-
-.no-results {
-  display: none;
-  color: var(--muted);
-  padding: 30px;
-  text-align: center;
-  border: 1px dashed #34425c;
-  border-radius: 12px;
+.card:hover{
+  transform:translateY(-5px);
+  border-color:var(--green);
+  box-shadow:0 12px 35px #0005;
 }
-
-.features {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 17px;
+.card-art{
+  height:125px;display:grid;place-items:center;
+  font-size:55px;
+  background:linear-gradient(135deg,#275b48,#183c54);
 }
-
-.feature {
-  padding: 24px;
-  background: #111827bb;
-  border: 1px solid #283852;
-  border-radius: 13px;
+.card-body{padding:17px}
+.card-body small{color:var(--green);font-weight:700;letter-spacing:1px}
+.card-body h3{font-size:17px;margin:7px 0}
+.card-body p{color:var(--muted);line-height:1.45;min-height:55px}
+.card-body button{
+  width:100%;margin-top:13px;padding:10px;
+  border-radius:8px;border:1px solid #52748b;
+  background:#213e4e;color:white;font-weight:700;cursor:pointer;
 }
+.card-body button:hover{background:#285e4a;border-color:var(--green)}
+.empty{display:none;padding:25px;color:var(--muted)}
 
-.feature .symbol {
-  font-size: 29px;
-  margin-bottom: 12px;
+.quick-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:15px;
 }
-
-.feature h3 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 17px;
-  margin-bottom: 8px;
+.quick{
+  background:#162b3c;border:1px solid var(--line);
+  padding:20px;border-radius:13px;
 }
+.quick b{color:var(--green)}
+.quick p{color:var(--muted);margin-top:7px}
 
-.feature p { color: var(--muted); line-height: 1.5; }
-
-.about {
-  background: linear-gradient(110deg, #101d31, #17112b);
-  border: 1px solid #35405e;
-  border-radius: 17px;
-  padding: 32px;
+.modal{
+  display:none;position:fixed;inset:0;z-index:30;
+  background:#02070cdd;backdrop-filter:blur(7px);
+  padding:18px;overflow:auto;
+  align-items:center;justify-content:center;
 }
-
-.about p {
-  color: #b7c4d8;
-  line-height: 1.7;
-  max-width: 800px;
+.modal.open{display:flex}
+.modalbox{
+  width:min(850px,100%);max-height:92vh;overflow:auto;
+  background:#112336;border:1px solid #54758c;
+  border-radius:17px;padding:25px;
 }
-
-footer {
-  border-top: 1px solid #25334b;
-  padding: 27px 20px;
-  text-align: center;
-  color: #8290a6;
+.modal-top{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:15px;margin-bottom:20px;
 }
-
-footer strong { color: var(--blue); }
-
-/* Rehber penceresi */
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 50;
-  inset: 0;
-  background: #02050bdc;
-  backdrop-filter: blur(7px);
-  padding: 20px;
-  overflow-y: auto;
-  align-items: center;
-  justify-content: center;
+.modal-top h2{font-size:22px;color:var(--green)}
+.close{
+  background:#294256;color:white;border:1px solid #688399;
+  border-radius:8px;padding:7px 13px;cursor:pointer;font-size:20px;
 }
-
-.modal.open { display: flex; }
-
-.modal-box {
-  width: min(680px, 100%);
-  max-height: 90vh;
-  overflow-y: auto;
-  background: #101a2b;
-  border: 1px solid #3b5275;
-  border-radius: 16px;
-  padding: 27px;
-  box-shadow: 0 20px 70px #000a;
-  position: relative;
+.article h3{color:#8cf2ad;margin:22px 0 8px;font-size:17px}
+.article p,.article li{color:#d1e0e9;line-height:1.65}
+.article ul,.article ol{padding-left:23px;margin:8px 0}
+.article .note{
+  margin-top:17px;padding:15px;
+  border-left:4px solid var(--green);
+  background:#214c3b55;border-radius:5px;color:#e0f6e8;
 }
+.article table{width:100%;border-collapse:collapse;margin:13px 0}
+.article td,.article th{padding:9px;border:1px solid #476174;text-align:left}
+.article th{color:var(--green);background:#1a3544}
+.article a{color:var(--cyan);text-decoration:underline}
 
-.close {
-  position: sticky;
-  float: right;
-  top: 0;
-  border: 1px solid #52617a;
-  background: #1b2940;
-  color: white;
-  border-radius: 8px;
-  padding: 6px 12px;
-  font-size: 20px;
-  cursor: pointer;
+footer{
+  border-top:1px solid var(--line);
+  text-align:center;padding:30px 15px;color:var(--muted);
 }
+footer strong{color:var(--green)}
 
-.modal-box h2 {
-  font-family: 'Orbitron', sans-serif;
-  color: var(--blue);
-  margin: 10px 45px 20px 0;
-  font-size: 24px;
+@media(max-width:850px){
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .quick-grid{grid-template-columns:1fr 1fr}
 }
-
-.modal-box h3 {
-  color: #bca5ff;
-  margin: 20px 0 8px;
-}
-
-.modal-box p, .modal-box li {
-  color: #c2cde0;
-  line-height: 1.65;
-}
-
-.modal-box ul { padding-left: 22px; }
-
-.guide-note {
-  background: #00c8ff10;
-  border-left: 3px solid var(--blue);
-  padding: 13px;
-  margin-top: 17px;
-  color: #c8e9f5;
-  border-radius: 5px;
-}
-
-@media (max-width: 700px) {
-  .nav { flex-direction: column; }
-  .nav-links { gap: 17px; font-size: 16px; }
-  .hero { padding: 75px 20px 60px; }
-  .games { grid-template-columns: 1fr; }
-  .features { grid-template-columns: 1fr; }
-  .section { padding-bottom: 55px; }
+@media(max-width:600px){
+  .nav{flex-direction:column}
+  .navlinks{justify-content:center;gap:14px}
+  .hero{padding-top:30px}
+  .hero-box{padding:28px 20px;min-height:350px}
+  .hero-box:after{font-size:55px;right:5%;bottom:4%}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .cards,.quick-grid{grid-template-columns:1fr}
+  .btn.secondary{margin-left:0}
 }
 </style>
 </head>
@@ -494,292 +251,492 @@ footer strong { color: var(--blue); }
 <header>
   <nav class="nav">
     <a href="#" class="logo">PLAY<span>HUB</span></a>
-    <div class="nav-links">
-      <a href="#oyunlar">Oyunlar</a>
-      <a href="#ozellikler">Özellikler</a>
-      <a href="#hakkimizda">Hakkımızda</a>
+    <div class="navlinks">
+      <a href="#minecraft">Minecraft</a>
+      <a href="#rehberler">Rehberler</a>
+      <a href="#video">Videolar</a>
+      <a href="#kaynaklar">Kaynaklar</a>
+      <a href="#gelecek">GTA 6</a>
     </div>
   </nav>
 </header>
 
 <main>
 
-<section class="hero">
-  <span class="tag">OYUNUN YENİ MERKEZİ</span>
-  <h1>KEŞFET. OYNA.<br><span class="gradient">ZİRVEYE ÇIK.</span></h1>
-  <p>
-    Oyun dünyasını keşfetmeye hazır mısın?
-    Rehberler, taktikler, ipuçları ve çok daha fazlası PlayHub'da seni bekliyor.
-  </p>
-  <div class="hero-buttons">
-    <a href="#oyunlar" class="btn btn-primary">Oyunları Keşfet</a>
-    <a href="#hakkimizda" class="btn btn-outline">PlayHub Hakkında</a>
+<section class="hero" id="minecraft">
+  <div class="hero-box">
+    <div class="hero-text">
+      <div class="eyebrow">PLAYHUB MINECRAFT ENCYCLOPEDIA</div>
+      <h1>MINECRAFT<br><span class="gradient">DÜNYASINI KEŞFET</span></h1>
+      <p>
+        İlk gece hayatta kalmaktan Ender Dragon'u yenmeye kadar
+        ihtiyacın olan rehberler, bilgiler, taktikler ve keşifler.
+      </p>
+      <a class="btn" href="#rehberler">Rehberleri Keşfet</a>
+      <a class="btn secondary" href="#video">Videoyu İzle</a>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><strong>3</strong><span>Boyut</span></div>
+    <div class="stat"><strong>5</strong><span>Temel oyun modu</span></div>
+    <div class="stat"><strong>∞</strong><span>Keşif olanağı</span></div>
+    <div class="stat"><strong>1</strong><span>Kendi dünyan</span></div>
   </div>
 </section>
 
-<section class="section" id="oyunlar">
-  <div class="section-heading">
-    <small>OYUN KÜTÜPHANESİ</small>
-    <h2>Oyununu <span class="gradient">Seç</span></h2>
-    <p>Rehberini bul, yeni taktikler öğren ve maceraya başla.</p>
+<section class="wrap" id="video">
+  <div class="section-head">
+    <small>MINECRAFT VİDEO MERKEZİ</small>
+    <h2>Oyun Dünyasına <span class="gradient">Göz At</span></h2>
+    <p>Resmî Minecraft fragmanını burada izleyebilirsin.</p>
   </div>
-
-  <div class="search-area">
-    <input id="gameSearch" type="search" placeholder="Oyun ara...">
-  </div>
-
-  <div class="filters">
-    <button class="filter active" data-filter="all">Tümü</button>
-    <button class="filter" data-filter="survival">Hayatta Kalma</button>
-    <button class="filter" data-filter="action">Aksiyon</button>
-    <button class="filter" data-filter="upcoming">Yakında</button>
-  </div>
-
-  <div class="games" id="gameList">
-
-    <article class="game-card" data-category="survival" data-name="minecraft">
-      <div class="game-art minecraft-art"></div>
-      <div class="game-content">
-        <div class="game-top">
-          <h3>Minecraft</h3>
-          <span class="status">Rehber hazır</span>
-        </div>
-        <p>
-          Bloklardan oluşan dünyanı keşfet. Kaynak topla,
-          yapılar inşa et ve hayatta kal.
-        </p>
-        <button class="btn btn-primary" onclick="openGuide('minecraft')">
-          Minecraft Rehberini Aç
-        </button>
-      </div>
-    </article>
-
-    <article class="game-card" data-category="upcoming action" data-name="gta 6 grand theft auto vi">
-      <div class="game-art gta-art"></div>
-      <div class="game-content">
-        <div class="game-top">
-          <h3>GTA 6</h3>
-          <span class="status soon">Rehber hazırlanacak</span>
-        </div>
-        <p>
-          GTA 6 için PlayHub rehberi burada yerini aldı.
-          Oyunla ilgili rehberlerimiz hazırlandığında bu bölüm güncellenecek.
-        </p>
-        <button class="btn btn-outline" onclick="openGuide('gta')">
-          GTA 6 Sayfasını Gör
-        </button>
-      </div>
-    </article>
-
-  </div>
-
-  <div class="no-results" id="noResults">
-    Aradığın oyun bulunamadı.
+  <div class="video-box">
+    <div class="video-frame">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/MmB9b5njVbA"
+        title="Minecraft fragmanı"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+    <p>Video oynatılamazsa <a href="https://www.youtube.com/@minecraft" target="_blank" rel="noopener" style="color:#68f29a">Minecraft resmî YouTube kanalını</a> ziyaret et.</p>
   </div>
 </section>
 
-<section class="section" id="ozellikler">
-  <div class="section-heading">
-    <small>PLAYHUB DENEYİMİ</small>
-    <h2>Neler <span class="gradient">Sunuyoruz?</span></h2>
-    <p>Oyun deneyimini geliştirecek içerikler tek yerde.</p>
+<section class="wrap" id="rehberler">
+  <div class="section-head">
+    <small>MINECRAFT BİLGİ BANKASI</small>
+    <h2>Her Şey İçin <span class="gradient">Tek Merkez</span></h2>
+    <p>Bir konu seç veya arama kutusuna istediğin şeyi yaz.</p>
   </div>
 
-  <div class="features">
-    <div class="feature">
-      <div class="symbol">📘</div>
-      <h3>Oyun Rehberleri</h3>
-      <p>Oyunları daha iyi anlamana yardımcı olacak başlangıç ve ilerleme rehberleri.</p>
-    </div>
+  <input class="search" id="search" type="search"
+    placeholder="Örnek: Creeper, elmas, köylü, iksir, Nether...">
 
-    <div class="feature">
-      <div class="symbol">⚔️</div>
-      <h3>Taktikler</h3>
-      <p>Zorlu görevler, düşmanlar ve oyun içi mücadeleler için faydalı ipuçları.</p>
-    </div>
+  <div class="filters" id="filters">
+    <button class="filter active" data-cat="all">Tümü</button>
+    <button class="filter" data-cat="baslangic">Başlangıç</button>
+    <button class="filter" data-cat="dunya">Dünya ve biyomlar</button>
+    <button class="filter" data-cat="yaratik">Yaratıklar</button>
+    <button class="filter" data-cat="esya">Eşyalar ve üretim</button>
+    <button class="filter" data-cat="sistem">Oyun sistemleri</button>
+    <button class="filter" data-cat="boyut">Boyutlar ve bosslar</button>
+  </div>
 
-    <div class="feature">
-      <div class="symbol">🌍</div>
-      <h3>Keşif</h3>
-      <p>Oyun dünyaları, biyomlar, eşyalar ve keşfedilecek yeni yerler.</p>
+  <div class="cards" id="cards"></div>
+  <div class="empty" id="empty">Bu aramayla eşleşen bir rehber bulunamadı.</div>
+</section>
+
+<section class="wrap">
+  <div class="section-head">
+    <small>YENİ OYUNCULAR İÇİN</small>
+    <h2>İlk Dünyana <span class="gradient">Başla</span></h2>
+    <p>Oyuna yeni başladıysan bu sırayı takip edebilirsin.</p>
+  </div>
+  <div class="quick-grid">
+    <div class="quick"><b>01 — Odun topla</b><p>Ağaç kes, kütükleri tahtaya çevir ve çalışma masası üret.</p></div>
+    <div class="quick"><b>02 — Alet üret</b><p>Çubuk ve tahta ile kazma, balta ve kılıç yap.</p></div>
+    <div class="quick"><b>03 — Barınak kur</b><p>Gece olmadan güvenli bir yer ve yatak hazırla.</p></div>
+    <div class="quick"><b>04 — Yiyecek bul</b><p>Hayvanlardan veya ekinlerden yiyecek elde et.</p></div>
+    <div class="quick"><b>05 — Madencilik yap</b><p>Taş, kömür, demir ve daha değerli madenleri ara.</p></div>
+    <div class="quick"><b>06 — Keşfe çık</b><p>Zırhını hazırla, köyleri ve yeni biyomları keşfet.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="kaynaklar">
+  <div class="section-head">
+    <small>DAHA FAZLA BİLGİ</small>
+    <h2>Resmî <span class="gradient">Minecraft Kaynakları</span></h2>
+    <p>Oyun güncellemeleri ve ayrıntılı eğitimler için kaynaklar.</p>
+  </div>
+  <div class="quick-grid">
+    <div class="quick">
+      <b>Minecraft Resmî Sitesi</b>
+      <p>Oyun, sürümler ve duyurular.</p>
+      <a class="btn" href="https://www.minecraft.net/" target="_blank" rel="noopener">Siteyi Aç</a>
+    </div>
+    <div class="quick">
+      <b>Minecraft Yardım Merkezi</b>
+      <p>Başlangıç, oyun modları, büyüler ve daha fazlası.</p>
+      <a class="btn" href="https://help.minecraft.net/" target="_blank" rel="noopener">Yardımı Aç</a>
+    </div>
+    <div class="quick">
+      <b>Minecraft Eğitim Rehberleri</b>
+      <p>Yeni başlayanlar için videolar ve anlatımlar.</p>
+      <a class="btn" href="https://www.minecraft.net/en-us/minecraft-tips-for-beginners" target="_blank" rel="noopener">Rehberleri Aç</a>
     </div>
   </div>
 </section>
 
-<section class="section" id="hakkimizda">
-  <div class="section-heading">
-    <small>BİZ KİMİZ?</small>
-    <h2>PlayHub <span class="gradient">Hakkında</span></h2>
+<section class="wrap" id="gelecek">
+  <div class="section-head">
+    <small>PLAYHUB GELECEK OYUNLAR</small>
+    <h2>GTA 6 <span class="gradient">Yakında</span></h2>
+    <p>GTA 6 seçeneği korunuyor. Doğrulanmış bilgiler geldikçe rehber hazırlanacak.</p>
   </div>
-
-  <div class="about">
-    <p>
-      PlayHub, oyuncular için hazırlanmış bağımsız bir oyun rehberi platformudur.
-      Amacımız oyun severlerin aradıkları bilgilere kolayca ulaşmasını sağlamak.
-      Yeni rehberler, oyunlar ve içeriklerle platformumuzu geliştirmeye devam edeceğiz.
-    </p>
-    <br>
-    <p>
-      PlayHub bağımsız bir hayran projesidir. Herhangi bir oyun şirketiyle
-      resmî bağlantısı veya ortaklığı bulunmamaktadır. Oyun adları ve ilgili
-      markalar kendi hak sahiplerine aittir.
-    </p>
+  <div class="quick">
+    <h3>🚘 Grand Theft Auto VI</h3>
+    <p>Görevler, karakterler, araçlar, harita ve taktikler için özel rehber alanı.</p>
+    <p style="color:#ffd37a;margin-top:10px">Durum: Rehber hazırlanacak</p>
   </div>
 </section>
 
 </main>
 
 <footer>
-  <p>© 2026 <strong>PlayHub</strong> — Oyun dünyasının buluşma noktası.</p>
-  <p>Bağımsız oyun rehberi platformu.</p>
+  <p>© 2026 <strong>PlayHub</strong> — Keşfet. Oyna. Zirveye çık.</p>
+  <p>Bağımsız oyun rehberi projesidir. Minecraft ve GTA ilgili hak sahiplerinin markalarıdır.</p>
 </footer>
 
-<!-- REHBER PENCERESİ -->
-<div class="modal" id="guideModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-box">
-    <button class="close" onclick="closeGuide()" aria-label="Kapat">×</button>
-    <div id="modalContent"></div>
+<div class="modal" id="modal">
+  <div class="modalbox">
+    <div class="modal-top">
+      <h2 id="modalTitle">Minecraft Rehberi</h2>
+      <button class="close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="article" id="modalBody"></div>
   </div>
 </div>
 
 <script>
-const guides = {
-  minecraft: `
-    <h2 id="modalTitle">⛏ Minecraft Rehberi</h2>
-    <p>Minecraft dünyasına hoş geldin! İşte macerana başlamak için temel bilgiler.</p>
+const articles = [
+{
+title:"Minecraft'a Başlangıç Rehberi",
+icon:"🌱",cat:"baslangic",
+desc:"Yeni dünya, ilk gün, temel araçlar ve hayatta kalma.",
+body:`
+<h3>Oyunun amacı nedir?</h3>
+<p>Minecraft, bloklardan oluşan prosedürel dünyalarda keşif, inşa, madencilik, üretim ve hayatta kalma üzerine kurulu bir sandbox oyunudur. Oyuncu kendi hedeflerini belirleyebilir.</p>
+<h3>İlk gün yapılacaklar</h3>
+<ol>
+<li>Ağaçlardan kütük topla.</li>
+<li>Kütükleri tahtaya dönüştür.</li>
+<li>Çalışma masası ve çubuk üret.</li>
+<li>Tahta kazma ile taş topla.</li>
+<li>Taş aletler ve fırın üret.</li>
+<li>Yiyecek bul ve gece için barınak hazırla.</li>
+</ol>
+<h3>Başlangıç tavsiyeleri</h3>
+<ul>
+<li>Koordinatlarını ve doğduğun yeri not et.</li>
+<li>Mağaraya meşalesiz girme.</li>
+<li>Lav yakınında değerli eşyalarını dikkatli taşı.</li>
+<li>Yatağını güvenli bir yere yerleştir.</li>
+<li>Sandık yaparak eşyalarını düzenle.</li>
+</ul>
+<div class="note">İlk hedefin elmas bulmak değil, güvenli bir üs ve sürdürülebilir yiyecek kaynağı kurmak olsun.</div>`
+},
+{
+title:"Oyun Modları ve Zorluklar",
+icon:"🎮",cat:"baslangic",
+desc:"Survival, Creative, Adventure, Spectator ve Hardcore.",
+body:`
+<h3>Survival</h3><p>Kaynak toplar, eşya üretir, açlık ve canını yönetir, yaratıklara karşı hayatta kalırsın.</p>
+<h3>Creative</h3><p>Sınırsız yapı malzemesi ve uçuş imkânıyla inşa ve tasarım yaparsın.</p>
+<h3>Adventure</h3><p>Özel haritalarda tasarımcının belirlediği kurallara göre oynarsın.</p>
+<h3>Spectator</h3><p>Dünyayı gözlemler, blokların içinden geçebilirsin; normal oyun etkileşimleri sınırlıdır.</p>
+<h3>Hardcore</h3><p>Tek can üzerine kurulu zorlu bir Survival deneyimidir. Ölümün sonuçları çok daha ağırdır.</p>
+<h3>Zorluk seviyeleri</h3>
+<ul><li>Peaceful: Düşman yaratıkların doğal oluşumu kapalıdır.</li><li>Easy: Düşmanlar daha az tehlikelidir.</li><li>Normal: Standart mücadele.</li><li>Hard: Daha sert düşmanlar ve daha yüksek risk.</li></ul>
+<div class="note">Modların ve bazı ayrıntıların Java ve Bedrock sürümlerinde farklılıkları olabilir.</div>`
+},
+{
+title:"Kontroller ve Envanter",
+icon:"🎒",cat:"baslangic",
+desc:"Hotbar, eşya yuvaları, zırh ve temel kontroller.",
+body:`
+<h3>Envanter</h3><p>Envanter, taşıdığın eşyaları yönetmeni, zırh takmanı ve tarifleri kullanmanı sağlar. PC'de varsayılan açma tuşu E'dir; diğer platformlarda kontrol düzeni farklıdır.</p>
+<h3>Hotbar</h3><p>Ekranın altındaki hızlı erişim çubuğudur. Sık kullandığın kazma, kılıç, yiyecek ve blokları burada tut.</p>
+<h3>Eşya düzeni</h3><ul><li>Birinci slota sık kullandığın silahı koy.</li><li>Kazma ve meşaleleri kolay erişilecek yerlere yerleştir.</li><li>Değerli eşyaları sandıklarda sakla.</li><li>Yedek yiyecek ve araç taşı.</li></ul>
+<h3>Dayanıklılık</h3><p>Aletler, zırhlar ve bazı ekipmanlar kullanıldıkça dayanıklılık kaybeder. Tamir ve büyü sistemleriyle ömürlerini yönetebilirsin.</p>`
+},
+{
+title:"Biyomlar ve Dünya Türleri",
+icon:"🌍",cat:"dunya",
+desc:"Ormanlar, çöller, okyanuslar, dağlar ve diğer ortamlar.",
+body:`
+<h3>Overworld biyomları</h3>
+<ul>
+<li><b>Plains:</b> Açık otlaklar ve köyler için uygun alanlar.</li>
+<li><b>Forest:</b> Odun ve çeşitli hayvanlar için verimli alanlar.</li>
+<li><b>Taiga:</b> Ladin ağaçları ve soğuk orman ortamı.</li>
+<li><b>Desert:</b> Kum, kaktüs, çöl köyleri ve tapınaklar.</li>
+<li><b>Jungle:</b> Yoğun bitki örtüsü, bambu ve özel yapılar.</li>
+<li><b>Swamp:</b> Bataklık ortamı ve farklı bitki örtüsü.</li>
+<li><b>Savanna:</b> Akasya ağaçları ve sıcak otlaklar.</li>
+<li><b>Snowy biomes:</b> Kar ve buzla kaplı alanlar.</li>
+<li><b>Badlands:</b> Renkli terakota oluşumları.</li>
+<li><b>Mushroom Fields:</b> Mantarlarla kaplı sıra dışı biyom.</li>
+<li><b>Ocean:</b> Su altı keşfi, batıklar ve okyanus yapıları.</li>
+<li><b>Mountain:</b> Yüksek zirveler, mağaralar ve madenler.</li>
+</ul>
+<h3>Mağara biyomları</h3>
+<p>Lush Caves bitki örtüsü ve su kaynaklarıyla, Dripstone Caves sivri taş oluşumlarıyla, Deep Dark ise tehlikeli sculk alanlarıyla tanınır.</p>
+<div class="note">Biyomların oluşumu dünya tohumu, sürüm ve dünya üretim ayarlarına bağlıdır.</div>`
+},
+{
+title:"Madenler ve Cevherler",
+icon:"💎",cat:"esya",
+desc:"Kömürden elmasa, demirden antik kalıntılara.",
+body:`
+<h3>Temel cevherler</h3>
+<ul>
+<li><b>Kömür:</b> Yakıt ve meşale üretimi.</li>
+<li><b>Bakır:</b> Yapı, dekorasyon ve çeşitli tarifler.</li>
+<li><b>Demir:</b> Alet, zırh, kova ve çok sayıda eşya.</li>
+<li><b>Altın:</b> Piglin takası ve özel tarifler.</li>
+<li><b>Lapis Lazuli:</b> Büyüleme işlemlerinde kullanılır.</li>
+<li><b>Kızıltaş:</b> Redstone devreleri ve otomasyon.</li>
+<li><b>Elmas:</b> Güçlü ekipman ve önemli tarifler.</li>
+<li><b>Zümrüt:</b> Köylülerle ticaret.</li>
+<li><b>Nether Quartz:</b> Nether kaynaklı tarifler ve Redstone bileşenleri.</li>
+<li><b>Ancient Debris:</b> Netherite geliştirmesi için kullanılır.</li>
+</ul>
+<h3>Güvenli madencilik</h3>
+<ul><li>Yedek kazma ve meşale taşı.</li><li>Su kovası bulundur.</li><li>Lavın üstünde doğrudan kazı yapma.</li><li>Değerli cevherleri doğru aletle çıkar.</li><li>Koordinatlarını takip et.</li></ul>
+<div class="note">Cevher dağılımı dünya yüksekliğine ve oyun sürümüne göre değişebilir. Eski sürümden alınmış tek bir Y koordinatına güvenme.</div>`
+},
+{
+title:"Üretim ve Crafting",
+icon:"🛠️",cat:"esya",
+desc:"Çalışma masası, temel tarifler ve üretim mantığı.",
+body:`
+<h3>Üretim sistemi</h3><p>Envanterindeki 2×2 alan basit tarifler içindir. Çalışma masası 3×3 üretim alanı açar.</p>
+<h3>Başlangıç tarifleri</h3>
+<table><tr><th>Eşya</th><th>Gerekli malzeme</th></tr>
+<tr><td>Tahta</td><td>1 kütük</td></tr>
+<tr><td>Çubuk</td><td>2 tahta, dikey</td></tr>
+<tr><td>Çalışma masası</td><td>4 tahta</td></tr>
+<tr><td>Meşale</td><td>1 kömür veya odun kömürü + 1 çubuk</td></tr>
+<tr><td>Fırın</td><td>8 kırık taş</td></tr>
+<tr><td>Sandık</td><td>8 tahta</td></tr>
+</table>
+<h3>Alet üretimi</h3><p>Kazma, balta, kürek, çapa ve kılıç gibi araçlar malzeme ve çubuklarla üretilir. Tarif kitabı, açtığın tarifleri oyun içinde görmeni sağlar.</p>
+<h3>Üretim istasyonları</h3><ul><li>Crafting Table: Genel üretim.</li><li>Furnace: Eritme ve pişirme.</li><li>Smoker: Yiyecek pişirme.</li><li>Blast Furnace: Metal cevherlerini işleme.</li><li>Stonecutter: Taş blok tarifleri.</li><li>Anvil: Eşya tamiri ve büyü birleştirme.</li></ul>
+<div class="note">Tariflerin bazıları sürüme veya eşya türüne göre değişebilir. Oyun içindeki tarif kitabı en güvenilir kontrol noktalarından biridir.</div>`
+},
+{
+title:"Silahlar, Zırhlar ve Aletler",
+icon:"⚔️",cat:"esya",
+desc:"Ekipman türleri, malzeme seviyeleri ve dayanıklılık.",
+body:`
+<h3>Alet türleri</h3><ul><li>Pickaxe: Taş ve cevher madenciliği.</li><li>Axe: Odun kesme ve yakın dövüş.</li><li>Shovel: Toprak, kum ve benzeri bloklar.</li><li>Hoe: Tarım ve bazı bloklar.</li><li>Sword: Yakın dövüş.</li><li>Bow ve Crossbow: Menzilli saldırı.</li><li>Shield: Saldırıları engelleme.</li></ul>
+<h3>Malzeme aşamaları</h3><p>Tahta, taş, demir, altın, elmas ve Netherite ekipmanları farklı dayanıklılık ve kullanım özelliklerine sahiptir. Altın hızlı kazabilir ama dayanıklılığı düşüktür.</p>
+<h3>Zırh parçaları</h3><p>Kask, göğüslük, pantolon ve botlar. Kalkan da savunmada önemlidir.</p>
+<h3>Özel ekipmanlar</h3><ul><li>Elytra: Havada süzülme.</li><li>Trident: Yakın ve menzilli kullanım.</li><li>Totem of Undying: Ölümcül bir darbede kurtuluş sağlayabilir.</li><li>Fishing Rod: Balıkçılık ve bazı etkileşimler.</li></ul>`
+},
+{
+title:"Yaratıklar ve Mob Rehberi",
+icon:"🐉",cat:"yaratik",
+desc:"Pasif, tarafsız ve düşman yaratıklar.",
+body:`
+<h3>Pasif yaratıklar</h3><p>İnek, koyun, domuz, tavuk, at ve benzeri canlılar genellikle oyuncuya kendiliğinden saldırmaz. Bazıları yiyecek, yün, ulaşım veya başka kaynaklar sağlar.</p>
+<h3>Tarafsız yaratıklar</h3><p>Enderman, arılar, kurtlar, demir golemler ve bazı diğer canlılar koşullara bağlı olarak saldırabilir. Piglinler altın zırh giymeyen oyunculara düşman olabilir.</p>
+<h3>Düşman yaratıklar</h3>
+<ul><li><b>Zombie:</b> Yakın dövüş saldırısı.</li><li><b>Skeleton:</b> Yayla uzaktan saldırır.</li><li><b>Creeper:</b> Yaklaşınca patlar.</li><li><b>Spider:</b> Duvarlara tırmanabilir.</li><li><b>Witch:</b> İksir kullanır.</li><li><b>Enderman:</b> Göz temasıyla saldırganlaşabilir.</li><li><b>Blaze:</b> Nether Fortress içinde bulunur.</li><li><b>Ghast:</b> Nether'de ateş topları atar.</li><li><b>Warden:</b> Deep Dark'ın çok tehlikeli koruyucusu.</li></ul>
+<h3>Boss yaratıklar</h3><p>Ender Dragon ve Wither, oyunun başlıca boss mücadeleleridir.</p>
+<div class="note">Yaratıkların ortaya çıkma koşulları biyoma, ışığa, boyuta ve sürüme göre farklılaşabilir.</div>`
+},
+{
+title:"Köylüler ve Ticaret",
+icon:"🧑‍🌾",cat:"sistem",
+desc:"Meslekler, iş blokları, zümrüt ve ticaret düzeni.",
+body:`
+<h3>Köylü meslekleri</h3><p>Köylüler uygun iş bloklarıyla meslek edinir. Meslekleri, sundukları ticaret seçeneklerini belirler.</p>
+<ul><li>Farmer — Composter</li><li>Librarian — Lectern</li><li>Armorer — Blast Furnace</li><li>Weaponsmith — Grindstone</li><li>Toolsmith — Smithing Table</li><li>Cleric — Brewing Stand</li><li>Cartographer — Cartography Table</li><li>Fletcher — Fletching Table</li><li>Butcher — Smoker</li><li>Leatherworker — Cauldron</li><li>Mason — Stonecutter</li><li>Shepherd — Loom</li></ul>
+<h3>Ticaret</h3><p>Zümrüt karşılığında yiyecek, ekipman, harita ve başka kaynaklar alınabilir. Ticaret yaptıkça köylünün seviyesi ve seçenekleri gelişebilir.</p>
+<h3>Köy güvenliği</h3><ul><li>Köyü aydınlat.</li><li>Köylüleri düşmanlardan koru.</li><li>Yatak ve iş bloklarını düzenle.</li><li>Demir golemlerin korunma rolünden yararlan.</li></ul>`
+},
+{
+title:"Tarım, Hayvancılık ve Çiftlikler",
+icon:"🌾",cat:"sistem",
+desc:"Ekinler, hayvan üretimi, yiyecek ve otomasyon.",
+body:`
+<h3>Tarım</h3><p>Buğday, havuç, patates, pancar ve diğer ekinler uygun tarım arazisinde yetiştirilebilir. Su, ışık ve uygun koşullar büyümeyi etkiler.</p>
+<h3>Hayvancılık</h3><ul><li>İnekler: Buğdayla çiftleştirilebilir.</li><li>Koyunlar: Buğdayla çiftleştirilebilir, yün verir.</li><li>Domuzlar: Havuç, patates veya pancarla çiftleştirilebilir.</li><li>Tavuklar: Tohumlarla beslenebilir.</li></ul>
+<h3>Çiftlik tasarımı</h3><p>Su kanalları, ekim alanları, hasat sistemleri ve depolama alanları kur. Otomatik çiftliklerde Redstone ve gözlemci gibi bileşenler kullanılabilir.</p>
+<h3>Balıkçılık</h3><p>Olta ile balık ve farklı ganimetler elde edilebilir. Su koşulları ve kullanılan büyüler sonuçları etkileyebilir.</p>`
+},
+{
+title:"Büyüler ve Enchanting",
+icon:"✨",cat:"sistem",
+desc:"Büyü masası, örs ve ekipman geliştirme.",
+body:`
+<h3>Büyü masası</h3><p>Büyü masası ekipmanlara özel özellikler kazandırır. Lapis Lazuli ve deneyim seviyesi gerekir. Etrafına uygun biçimde kitaplık yerleştirmek daha güçlü seçeneklerin açılmasına yardımcı olur.</p>
+<h3>Önemli büyüler</h3>
+<ul><li>Efficiency: Madencilik hızını artırır.</li><li>Unbreaking: Dayanıklılığın daha yavaş azalmasına yardımcı olur.</li><li>Mending: Deneyim küreleriyle eşyanın dayanıklılığını onarır.</li><li>Fortune: Uygun bloklardan elde edilen ganimeti artırabilir.</li><li>Silk Touch: Blokları özel biçimde düşürür.</li><li>Protection: Hasara karşı koruma sağlar.</li><li>Sharpness: Yakın dövüş hasarını artırır.</li><li>Feather Falling: Düşme hasarını azaltır.</li><li>Respiration: Su altında nefes alma süresini artırır.</li></ul>
+<h3>Örs</h3><p>Eşyaları birleştirmek, büyülü kitap uygulamak ve bazı tamir işlemleri için kullanılır. İşlemler deneyim maliyetine sahiptir.</p>
+<div class="note">Bütün büyüler her eşya türüne uygulanamaz. Bazı büyüler birbiriyle uyumsuzdur.</div>`
+},
+{
+title:"İksirler ve Brewing",
+icon:"🧪",cat:"sistem",
+desc:"İksir standı, malzemeler ve durum etkileri.",
+body:`
+<h3>Başlangıç</h3><p>İksir hazırlamak için Brewing Stand, cam şişeler, su ve gerekli malzemeler kullanılır. Nether Wart birçok temel iksirin hazırlanmasında önemli bir başlangıç bileşenidir.</p>
+<h3>Önemli malzemeler</h3><ul><li>Blaze Powder: İksir standının yakıtı.</li><li>Nether Wart: Birçok temel iksirin başlangıç bileşeni.</li><li>Redstone Dust: Bazı iksirlerin süresini uzatır.</li><li>Glowstone Dust: Bazı iksirlerin etkisini güçlendirir.</li><li>Gunpowder: İksiri fırlatılabilir hâle getirir.</li><li>Dragon's Breath: Kalıcı alan etkili iksirler için kullanılır.</li></ul>
+<h3>İksir etkileri</h3><p>Hız, güç, ateşe dayanıklılık, su altında nefes alma, iyileştirme, yenilenme ve görünmezlik gibi etkiler bulunur.</p>
+<h3>Uyarı</h3><p>Her malzeme her iksirle çalışmaz. Tarif ve etkiyi üretim sırasında kontrol et.</p>`
+},
+{
+title:"Redstone ve Otomasyon",
+icon:"🔴",cat:"sistem",
+desc:"Devreler, sinyaller, pistonlar ve otomatik sistemler.",
+body:`
+<h3>Redstone nedir?</h3><p>Redstone, oyun içinde elektrik devrelerine benzeyen mekanizmalar kurmanı sağlar. Kapılar, tuzaklar, otomatik çiftlikler ve taşıma sistemleri oluşturabilirsin.</p>
+<h3>Temel bileşenler</h3><ul><li>Redstone Dust: Sinyal iletimi.</li><li>Redstone Torch: Sinyal kaynağı ve tersleyici.</li><li>Repeater: Sinyali yenileme ve geciktirme.</li><li>Comparator: Sinyal karşılaştırma ve ölçme.</li><li>Piston: Blokları itme.</li><li>Sticky Piston: Blokları itme ve çekme.</li><li>Observer: Blok değişimini algılama.</li><li>Hopper: Eşya taşıma.</li><li>Dispenser: Eşya veya bazı nesneleri kullanma.</li></ul>
+<h3>Proje fikirleri</h3><ul><li>Otomatik kapı.</li><li>Gizli geçit.</li><li>Otomatik fırın sistemi.</li><li>Hasat mekanizması.</li><li>Eşya ayırma sistemi.</li></ul>`
+},
+{
+title:"Yapılar ve Keşif",
+icon:"🏰",cat:"dunya",
+desc:"Köyler, tapınaklar, kaleler, antik şehirler ve ganimet.",
+body:`
+<h3>Overworld yapıları</h3>
+<ul><li>Village: Köylüler ve ticaret.</li><li>Desert Pyramid: Çöl tapınağı ve ganimet odası.</li><li>Jungle Temple: Tuzaklı tapınak.</li><li>Stronghold: End portalı içeren yapı.</li><li>Woodland Mansion: Büyük ve tehlikeli yapı.</li><li>Ocean Monument: Su altı yapısı ve Guardianlar.</li><li>Ancient City: Deep Dark bölgesindeki yapı.</li><li>Trial Chambers: Mücadele odaları ve ödüller.</li><li>Shipwreck: Batık gemiler ve sandıklar.</li><li>Buried Treasure: Gömülü hazine.</li></ul>
+<h3>Keşif hazırlığı</h3><p>Yiyecek, meşale, kalkan, zırh, yedek alet ve boş envanter alanı taşı. Bulduğun ganimetleri güvenli biçimde depola.</p>`
+},
+{
+title:"Nether Boyutu",
+icon:"🔥",cat:"boyut",
+desc:"Portal, biyomlar, yapılar ve tehlikeli yaratıklar.",
+body:`
+<h3>Nether'a giriş</h3><p>Obsidyen bloklarla portal çerçevesi oluşturup ateşleyerek Nether'a geçebilirsin. Portal boyutu ve biçimi uygun olmalıdır.</p>
+<h3>Nether biyomları</h3><ul><li>Nether Wastes</li><li>Crimson Forest</li><li>Warped Forest</li><li>Soul Sand Valley</li><li>Basalt Deltas</li></ul>
+<h3>Önemli kaynaklar</h3><ul><li>Nether Quartz</li><li>Nether Gold</li><li>Ancient Debris</li><li>Glowstone</li><li>Nether Wart</li></ul>
+<h3>Yapılar</h3><p>Nether Fortress ve Bastion Remnant önemli keşif alanlarıdır. Fortress, Blaze gibi yaratıkları ve iksir ilerlemesi için gereken kaynakları bulabileceğin yerdir.</p>
+<h3>Güvenlik</h3><p>Yanında altın zırh parçası bulundurmak Piglinlerle karşılaşırken yardımcı olabilir. Ateşe dayanıklılık iksiri, blok ve yiyecek taşımayı unutma.</p>`
+},
+{
+title:"The End ve Ender Dragon",
+icon:"🐲",cat:"boyut",
+desc:"Stronghold, End portalı, kristaller ve final savaşı.",
+body:`
+<h3>End portalını bul</h3><p>Ender Pearl ve Blaze Powder kullanılarak Eye of Ender üretilir. Gözleri fırlatarak Stronghold yönünü bulabilirsin. Portal odasını bulduğunda eksik çerçevelere Eyes of Ender yerleştirilir.</p>
+<h3>Savaşa hazırlık</h3><ul><li>Güçlü zırh ve silah.</li><li>Yay ve bol ok.</li><li>Yiyecek ve iyileştirme.</li><li>Su kovası.</li><li>Yeterli blok.</li><li>Gerekirse Slow Falling iksiri.</li></ul>
+<h3>Ender Dragon savaşı</h3><p>Obsidyen sütunların üzerindeki End Crystal'ler ejderhayı iyileştirir. Önce kristalleri etkisiz hâle getir. Ardından ejderhanın saldırı düzenlerini takip ederek uygun anlarda hasar ver.</p>
+<h3>Savaştan sonra</h3><p>End Gateway üzerinden dış adalara ulaşabilir, End City ve gemileri keşfedebilirsin. Elytra ve Shulker Shell gibi değerli ganimetler bulabilirsin.</p>`
+},
+{
+title:"Wither Boss Rehberi",
+icon:"☠️",cat:"boyut",
+desc:"Wither çağırma, savaş hazırlığı ve ödüller.",
+body:`
+<h3>Wither nasıl çağrılır?</h3><p>Wither Skeleton kafatasları ve Soul Sand veya Soul Soil kullanılarak özel bir düzenek kurulur. Çağırma işlemi tehlikelidir.</p>
+<h3>Savaş hazırlığı</h3><ul><li>Güçlü zırh ve silah taşı.</li><li>İyileştirme ve yenilenme kaynakları hazırla.</li><li>Savaş alanını önceden planla.</li><li>Patlama ve Wither etkisine karşı dikkatli ol.</li></ul>
+<h3>Ödül</h3><p>Wither yenildiğinde Nether Star düşürür. Bu eşya Beacon üretiminde kullanılır.</p>`
+},
+{
+title:"Ulaşım ve Keşif Araçları",
+icon:"🚂",cat:"sistem",
+desc:"At, tekne, minecart, Elytra ve ulaşım yöntemleri.",
+body:`
+<h3>Karada</h3><p>Atlar hızlı yolculuk sağlar. Eyerle kontrol edilebilirler. Eşek ve katır gibi canlılar eşya taşımada kullanılabilir.</p>
+<h3>Suda</h3><p>Tekneler nehir ve okyanuslarda yolculuk için kullanılır. Buz üzerinde farklı ulaşım sistemleri kurulabilir.</p>
+<h3>Ray sistemi</h3><p>Minecart ve raylar, maden ve üsler arasında ulaşım sağlar. Powered Rail ile hareket desteklenebilir.</p>
+<h3>Havada</h3><p>Elytra, End keşfi sonrasında elde edilebilen süzülme ekipmanıdır. Firework Rocket ile uçuş desteklenebilir.</p>`
+},
+{
+title:"Çok Oyunculu ve Sunucular",
+icon:"🌐",cat:"sistem",
+desc:"Arkadaşlarla oynama, sunucular ve güvenlik.",
+body:`
+<h3>Çok oyunculu oyun</h3><p>Desteklenen platform ve sürümlerde arkadaşlarınla aynı dünyada oynayabilir veya sunuculara katılabilirsin.</p>
+<h3>Sunucu türleri</h3><ul><li>Survival: Kaynak ve hayatta kalma.</li><li>Creative: Birlikte inşa.</li><li>Minigames: Kısa oyun modları.</li><li>Adventure: Özel hazırlanmış maceralar.</li><li>Roleplay: Rol yapma toplulukları.</li></ul>
+<h3>Güvenlik</h3><ul><li>Hesap şifreni kimseyle paylaşma.</li><li>Tanımadığın kişilere kişisel bilgilerini verme.</li><li>Güvenilir sunucular seç.</li><li>Şüpheli indirme bağlantılarına dikkat et.</li><li>Sunucu kurallarını oku.</li></ul>`
+},
+{
+title:"Java ve Bedrock Edition",
+icon:"💻",cat:"baslangic",
+desc:"Sürümler arasındaki temel farklar ve platformlar.",
+body:`
+<h3>Java Edition</h3><p>Bilgisayarda oynanan Java sürümüdür. Modlar, sunucular ve teknik topluluklar açısından geniş bir ekosisteme sahiptir.</p>
+<h3>Bedrock Edition</h3><p>Windows, konsol ve mobil gibi platformlarda bulunan sürümdür. Desteklenen cihazlar arasında çapraz oyun imkânı sunar.</p>
+<h3>Önemli farklılıklar</h3><ul><li>Redstone davranışları aynı olmayabilir.</li><li>Komutlar ve bazı mekanikler değişebilir.</li><li>Mod ve eklenti yöntemleri farklıdır.</li><li>Sunucu ve çok oyunculu seçenekleri farklılık gösterebilir.</li><li>Başarım sistemleri değişebilir.</li></ul>
+<div class="note">Bir rehberi uygulamadan önce hangi Edition ve oyun sürümünü kullandığını kontrol et.</div>`
+},
+{
+title:"Komutlar ve Dünya Ayarları",
+icon:"⌨️",cat:"sistem",
+desc:"Komut sistemi, gamerule ve dünya yönetimi.",
+body:`
+<h3>Komutlar</h3><p>Komutlar, izin ve dünya ayarlarına bağlı olarak oyun davranışını değiştirebilir. Hilelerin açık olması gerekebilir.</p>
+<h3>Örnek komutlar</h3>
+<ul><li><code>/gamemode creative</code> — Creative moduna geçiş.</li><li><code>/gamemode survival</code> — Survival moduna geçiş.</li><li><code>/time set day</code> — Gündüz ayarı.</li><li><code>/weather clear</code> — Açık hava.</li><li><code>/tp</code> — Işınlanma komutu.</li><li><code>/give</code> — Eşya verme komutu.</li><li><code>/locate</code> — Yapı veya konum bulma.</li></ul>
+<h3>Dikkat</h3><p>Komut sözdizimi Java ve Bedrock sürümlerinde değişebilir. Dünyanda komut kullanmadan önce yedek al.</p>`
+},
+{
+title:"Performans ve Oyun Ayarları",
+icon:"⚙️",cat:"baslangic",
+desc:"Görüntü, mesafe, kontrol ve performans ayarları.",
+body:`
+<h3>Performans</h3><ul><li>Render Distance değerini cihazına göre ayarla.</li><li>Gereksiz arka plan uygulamalarını kapat.</li><li>Grafik ayarlarını cihazına uygun seç.</li><li>Kaynak paketlerini dikkatli kullan.</li></ul>
+<h3>Kontroller</h3><p>Hassasiyet, tuş atamaları ve kontrol düzeni kişisel tercihe göre ayarlanabilir.</p>
+<h3>Dünya yedekleri</h3><p>Uzun süre oynadığın dünyaların düzenli yedeğini al. Mod veya eklenti yüklemeden önce uyumluluğu kontrol et.</p>`
+}
+];
 
-    <h3>1. İlk Gün Ne Yapmalısın?</h3>
-    <ul>
-      <li>Çevrendeki ağaçlardan odun topla.</li>
-      <li>Odunları işleyerek tahta ve çalışma masası hazırla.</li>
-      <li>Taş aletler yapmak için taş kaz.</li>
-      <li>Gece olmadan küçük bir barınak oluştur.</li>
-      <li>Yiyecek bul ve karakterinin açlık seviyesine dikkat et.</li>
-    </ul>
+let activeCategory="all";
 
-    <h3>2. Hayatta Kalma İpuçları</h3>
-    <ul>
-      <li>Mağaralara hazırlıksız girme.</li>
-      <li>Yanında meşale, yiyecek ve yedek kazma bulundur.</li>
-      <li>Değerli eşyalarını güvenli bir sandıkta sakla.</li>
-      <li>Lav bulunan alanlarda dikkatli hareket et.</li>
-      <li>Yatak kullanarak geceyi atlatabilir ve doğma noktanı ayarlayabilirsin.</li>
-    </ul>
-
-    <h3>3. Temel Üretim Tarifleri</h3>
-    <ul>
-      <li><b>Tahta:</b> Kütükleri üretim alanında işle.</li>
-      <li><b>Çalışma Masası:</b> 4 tahta bloğu kullan.</li>
-      <li><b>Çubuk:</b> 2 tahtayı dikey şekilde yerleştir.</li>
-      <li><b>Meşale:</b> Kömür veya odun kömürü ile çubuğu birleştir.</li>
-      <li><b>Fırın:</b> 8 kırık taşı çalışma masasında kenarlara yerleştir.</li>
-    </ul>
-
-    <h3>4. Oyun Modları</h3>
-    <ul>
-      <li><b>Survival:</b> Kaynak topla ve hayatta kal.</li>
-      <li><b>Creative:</b> Sınırsız yapı malzemeleriyle inşa et.</li>
-      <li><b>Adventure:</b> Özel hazırlanmış maceraları oyna.</li>
-      <li><b>Spectator:</b> Dünyayı gözlemle.</li>
-    </ul>
-
-    <h3>5. İlerleyen Aşamalar</h3>
-    <ul>
-      <li>Demir zırh ve araçlar üret.</li>
-      <li>Elmas aramak için uygun derinliklerde madencilik yap.</li>
-      <li>Nether portalı kurmak için obsidyen elde et.</li>
-      <li>End boyutuna hazırlan ve Ender Dragon mücadelesini araştır.</li>
-    </ul>
-
-    <div class="guide-note">
-      💡 İpucu: İlk dünyanda acele etme. Önce güvenli bir üs kur,
-      yiyecek ve temel araçlarını hazırla.
-    </div>
-  `,
-
-  gta: `
-    <h2 id="modalTitle">🚘 GTA 6 — PlayHub</h2>
-    <p>GTA 6 için özel sayfamız açıldı. Bu bölüm, oyunla ilgili rehber içerikleri hazırlandıkça güncellenecek.</p>
-
-    <h3>Bu sayfada neler olacak?</h3>
-    <ul>
-      <li>Oyun dünyası ve şehir rehberi</li>
-      <li>Görevler ve ilerleme ipuçları</li>
-      <li>Araçlar ve ulaşım rehberi</li>
-      <li>Karakterler hakkında bilgiler</li>
-      <li>Keşfedilecek yerler ve sırlar</li>
-      <li>Oyun mekanikleri ve taktikler</li>
-    </ul>
-
-    <div class="guide-note">
-      🚧 GTA 6 rehberi hazırlanma aşamasında.
-      Doğrulanmamış görev, harita veya oyun içi özellik bilgileri paylaşmıyoruz.
-      Yeni bilgiler geldikçe bu sayfa güncellenecek.
-    </div>
-  `
-};
-
-function openGuide(game) {
-  const content = guides[game];
-  if (!content) return;
-
-  document.getElementById('modalContent').innerHTML = content;
-  document.getElementById('guideModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
+function renderCards(){
+ const q=document.getElementById("search").value.toLocaleLowerCase("tr").trim();
+ const filtered=articles.filter(a=>{
+   const text=(a.title+" "+a.desc+" "+a.cat+" "+a.body).toLocaleLowerCase("tr");
+   return (activeCategory==="all"||a.cat===activeCategory)&&text.includes(q);
+ });
+ const root=document.getElementById("cards");
+ root.innerHTML=filtered.map((a,i)=>`
+ <article class="card">
+   <div class="card-art">${a.icon}</div>
+   <div class="card-body">
+     <small>MINECRAFT REHBERİ</small>
+     <h3>${a.title}</h3>
+     <p>${a.desc}</p>
+     <button data-index="${articles.indexOf(a)}">Rehberi Oku →</button>
+   </div>
+ </article>`).join("");
+ document.getElementById("empty").style.display=filtered.length?"none":"block";
+ root.querySelectorAll("button").forEach(btn=>{
+   btn.addEventListener("click",()=>openArticle(Number(btn.dataset.index)));
+ });
 }
 
-function closeGuide() {
-  document.getElementById('guideModal').classList.remove('open');
-  document.body.style.overflow = '';
+function openArticle(index){
+ const a=articles[index];
+ if(!a)return;
+ document.getElementById("modalTitle").textContent=a.icon+" "+a.title;
+ document.getElementById("modalBody").innerHTML=a.body;
+ document.getElementById("modal").classList.add("open");
+ document.body.style.overflow="hidden";
 }
 
-document.getElementById('guideModal').addEventListener('click', function(event) {
-  if (event.target === this) closeGuide();
-});
-
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') closeGuide();
-});
-
-// Oyun arama ve filtreleme
-const searchInput = document.getElementById('gameSearch');
-const cards = [...document.querySelectorAll('.game-card')];
-const filterButtons = [...document.querySelectorAll('.filter')];
-let activeFilter = 'all';
-
-function filterGames() {
-  const query = searchInput.value.toLocaleLowerCase('tr').trim();
-  let visibleCount = 0;
-
-  cards.forEach(card => {
-    const name = card.dataset.name.toLocaleLowerCase('tr');
-    const category = card.dataset.category;
-    const matchesSearch = name.includes(query);
-    const matchesFilter = activeFilter === 'all' ||
-      category.split(' ').includes(activeFilter);
-
-    const visible = matchesSearch && matchesFilter;
-    card.style.display = visible ? '' : 'none';
-
-    if (visible) visibleCount++;
-  });
-
-  document.getElementById('noResults').style.display =
-    visibleCount === 0 ? 'block' : 'none';
+function closeModal(){
+ document.getElementById("modal").classList.remove("open");
+ document.body.style.overflow="";
 }
 
-searchInput.addEventListener('input', filterGames);
+document.getElementById("search").addEventListener("input",renderCards);
 
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    filterButtons.forEach(item => item.classList.remove('active'));
-    button.classList.add('active');
-    activeFilter = button.dataset.filter;
-    filterGames();
-  });
+document.querySelectorAll(".filter").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  activeCategory=btn.dataset.cat;
+  renderCards();
+ });
 });
+
+document.getElementById("modal").addEventListener("click",e=>{
+ if(e.target.id==="modal")closeModal();
+});
+
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape")closeModal();
+});
+
+renderCards();
 </script>
-
 </body>
 </html>
 
