@@ -4,159 +4,487 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PlayHub | Oyun Rehberi</title>
+<meta name="description" content="PlayHub - Oyun rehberleri, ipuçları, taktikler ve keşif dünyası.">
+<title>PlayHub | Oyun Dünyasına Hoş Geldin</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #080b14;
+  --panel: #111827;
+  --blue: #00c8ff;
+  --purple: #925cff;
+  --text: #f4f7ff;
+  --muted: #9ba8bd;
 }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  background: #080d18;
-  color: white;
-  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
+  overflow-x: hidden;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 15%, #123b6533, transparent 35%),
+    radial-gradient(circle at 85% 35%, #652a9430, transparent 35%);
+}
+
+a { color: inherit; text-decoration: none; }
+
 header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #080b14eF;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #25334b;
+}
+
+.nav {
+  max-width: 1180px;
+  margin: auto;
+  padding: 17px 22px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 22px 8%;
-  background: #101827;
-  border-bottom: 1px solid #24334a;
+  gap: 20px;
 }
 
 .logo {
-  color: #38bdf8;
-  font-size: 28px;
-  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
+.logo span { color: var(--blue); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
 }
 
-nav a:hover {
-  color: #38bdf8;
+.nav-links a {
+  color: #c5d0e2;
+  font-weight: 600;
+  transition: .2s;
 }
+
+.nav-links a:hover { color: var(--blue); }
 
 .hero {
+  max-width: 1180px;
+  margin: auto;
+  padding: 105px 22px 85px;
   text-align: center;
-  padding: 100px 20px;
-  background: linear-gradient(135deg,#101827,#172d50);
+}
+
+.tag {
+  display: inline-block;
+  padding: 8px 17px;
+  border: 1px solid #00c8ff66;
+  border-radius: 30px;
+  color: var(--blue);
+  background: #00c8ff0c;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 14px;
 }
 
 .hero h1 {
-  font-size: 48px;
-  margin-bottom: 15px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(34px, 6vw, 65px);
+  line-height: 1.2;
+  margin: 25px 0 18px;
 }
 
-.hero h1 span {
-  color: #38bdf8;
+.gradient {
+  background: linear-gradient(90deg, var(--blue), #8d65ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .hero p {
-  color: #cbd5e1;
-  margin-bottom: 25px;
+  max-width: 650px;
+  margin: auto;
+  color: var(--muted);
+  font-size: 21px;
+  line-height: 1.6;
 }
 
-.search {
-  padding: 14px;
-  width: 90%;
-  max-width: 450px;
-  border-radius: 8px;
-  border: 1px solid #38bdf8;
-  background: #080d18;
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 32px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 25px;
+  border-radius: 9px;
+  font-weight: 700;
+  font-size: 18px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: .25s;
+  font-family: inherit;
+}
+
+.btn-primary {
+  color: #06111b;
+  background: linear-gradient(100deg, var(--blue), #7c6cff);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px #00c8ff40;
+}
+
+.btn-outline {
+  border-color: #45536d;
+  background: #ffffff08;
   color: white;
 }
 
-section {
-  padding: 55px 8%;
+.btn-outline:hover {
+  border-color: var(--blue);
+  color: var(--blue);
 }
 
-h2 {
-  margin-bottom: 25px;
-  color: #38bdf8;
+.section {
+  max-width: 1180px;
+  margin: auto;
+  padding: 35px 22px 75px;
+}
+
+.section-heading {
+  margin-bottom: 28px;
+}
+
+.section-heading small {
+  color: var(--blue);
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.section-heading h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(25px, 4vw, 36px);
+  margin-top: 9px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.search-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.search-area input {
+  flex: 1;
+  min-width: 220px;
+  padding: 14px 17px;
+  color: white;
+  background: #111827;
+  border: 1px solid #34425c;
+  border-radius: 9px;
+  outline: none;
+  font: inherit;
+}
+
+.search-area input:focus { border-color: var(--blue); }
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 28px;
+}
+
+.filter {
+  background: #111827;
+  color: #c4d0e3;
+  border: 1px solid #34425c;
+  padding: 8px 17px;
+  border-radius: 30px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.filter.active, .filter:hover {
+  background: #00c8ff18;
+  color: var(--blue);
+  border-color: var(--blue);
 }
 
 .games {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px;
 }
 
-.card {
-  background: #111c2e;
-  border: 1px solid #263b59;
-  border-radius: 12px;
+.game-card {
+  background: linear-gradient(145deg, #141e31, #0d1320);
+  border: 1px solid #283852;
+  border-radius: 17px;
   overflow: hidden;
-  transition: 0.3s;
+  transition: .25s;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  border-color: #38bdf8;
+.game-card:hover {
+  transform: translateY(-5px);
+  border-color: #00c8ff99;
+  box-shadow: 0 15px 40px #0006;
 }
 
-.card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
+.game-art {
+  height: 205px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.card-content {
-  padding: 20px;
+.minecraft-art {
+  background:
+    linear-gradient(180deg, #75c8f5 0%, #b5e6ff 48%, #5b9b43 49%, #244d2b 100%);
 }
 
-.card h3 {
-  margin-bottom: 10px;
+.minecraft-art::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 100px;
+  bottom: 0;
+  left: 0;
+  background: repeating-linear-gradient(90deg, #427a35 0 45px, #315e2b 45px 90px);
+  clip-path: polygon(0 20%, 30% 20%, 30% 0, 65% 0, 65% 40%, 100% 40%, 100% 100%, 0 100%);
 }
 
-.card p {
-  color: #aab8cc;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.card button {
-  margin-top: 15px;
-  padding: 10px 18px;
-  background: #0284c7;
-  border: none;
-  border-radius: 6px;
+.minecraft-art::after {
+  content: "MINECRAFT";
+  position: absolute;
   color: white;
-  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(23px, 4vw, 36px);
+  font-weight: 800;
+  text-shadow: 3px 4px 0 #273c24, 0 0 15px #0008;
+  transform: rotate(-4deg);
 }
 
-.card button:hover {
-  background: #0ea5e9;
+.gta-art {
+  background:
+    radial-gradient(circle at 50% 45%, #ff9c57, transparent 28%),
+    linear-gradient(140deg, #401b61, #a33b68 55%, #17182f);
+}
+
+.gta-art::after {
+  content: "GTA VI";
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  font-size: clamp(34px, 6vw, 55px);
+  font-weight: 800;
+  text-shadow: 3px 4px 0 #301333, 0 0 22px #ffb2d0;
+}
+
+.game-content { padding: 22px; }
+
+.game-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.game-top h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 21px;
+}
+
+.status {
+  font-size: 13px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #00c8781c;
+  color: #56e7a6;
+  border: 1px solid #00c87855;
+  white-space: nowrap;
+}
+
+.status.soon {
+  color: #ffc56d;
+  background: #ffb52b18;
+  border-color: #ffb52b55;
+}
+
+.game-content p {
+  color: var(--muted);
+  line-height: 1.5;
+  min-height: 55px;
+  margin-bottom: 17px;
+}
+
+.game-content .btn { width: 100%; text-align: center; }
+
+.no-results {
+  display: none;
+  color: var(--muted);
+  padding: 30px;
+  text-align: center;
+  border: 1px dashed #34425c;
+  border-radius: 12px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+
+.feature {
+  padding: 24px;
+  background: #111827bb;
+  border: 1px solid #283852;
+  border-radius: 13px;
+}
+
+.feature .symbol {
+  font-size: 29px;
+  margin-bottom: 12px;
+}
+
+.feature h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.feature p { color: var(--muted); line-height: 1.5; }
+
+.about {
+  background: linear-gradient(110deg, #101d31, #17112b);
+  border: 1px solid #35405e;
+  border-radius: 17px;
+  padding: 32px;
+}
+
+.about p {
+  color: #b7c4d8;
+  line-height: 1.7;
+  max-width: 800px;
 }
 
 footer {
+  border-top: 1px solid #25334b;
+  padding: 27px 20px;
   text-align: center;
-  padding: 30px;
-  background: #101827;
-  color: #94a3b8;
+  color: #8290a6;
 }
 
-@media(max-width:600px) {
-  header {
-    flex-direction: column;
-    gap: 15px;
-  }
+footer strong { color: var(--blue); }
 
-  nav a {
-    margin: 0 7px;
-    font-size: 13px;
-  }
+/* Rehber penceresi */
 
-  .hero h1 {
-    font-size: 34px;
-  }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  background: #02050bdc;
+  backdrop-filter: blur(7px);
+  padding: 20px;
+  overflow-y: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.open { display: flex; }
+
+.modal-box {
+  width: min(680px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #101a2b;
+  border: 1px solid #3b5275;
+  border-radius: 16px;
+  padding: 27px;
+  box-shadow: 0 20px 70px #000a;
+  position: relative;
+}
+
+.close {
+  position: sticky;
+  float: right;
+  top: 0;
+  border: 1px solid #52617a;
+  background: #1b2940;
+  color: white;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal-box h2 {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--blue);
+  margin: 10px 45px 20px 0;
+  font-size: 24px;
+}
+
+.modal-box h3 {
+  color: #bca5ff;
+  margin: 20px 0 8px;
+}
+
+.modal-box p, .modal-box li {
+  color: #c2cde0;
+  line-height: 1.65;
+}
+
+.modal-box ul { padding-left: 22px; }
+
+.guide-note {
+  background: #00c8ff10;
+  border-left: 3px solid var(--blue);
+  padding: 13px;
+  margin-top: 17px;
+  color: #c8e9f5;
+  border-radius: 5px;
+}
+
+@media (max-width: 700px) {
+  .nav { flex-direction: column; }
+  .nav-links { gap: 17px; font-size: 16px; }
+  .hero { padding: 75px 20px 60px; }
+  .games { grid-template-columns: 1fr; }
+  .features { grid-template-columns: 1fr; }
+  .section { padding-bottom: 55px; }
 }
 </style>
 </head>
@@ -164,94 +492,294 @@ footer {
 <body>
 
 <header>
-  <div class="logo">🎮 PLAYHUB</div>
-  <nav>
-    <a href="#anasayfa">Ana Sayfa</a>
-    <a href="#rehberler">Rehberler</a>
-    <a href="#hakkinda">Hakkımızda</a>
+  <nav class="nav">
+    <a href="#" class="logo">PLAY<span>HUB</span></a>
+    <div class="nav-links">
+      <a href="#oyunlar">Oyunlar</a>
+      <a href="#ozellikler">Özellikler</a>
+      <a href="#hakkimizda">Hakkımızda</a>
+    </div>
   </nav>
 </header>
 
-<div class="hero" id="anasayfa">
-  <h1>OYUNUN <span>MERKEZİ</span></h1>
-  <p>Haritalar, ipuçları, görevler ve oyun rehberleri!</p>
-  <input
-    class="search"
-    id="search"
-    placeholder="Oyun veya rehber ara..."
-    oninput="searchCards()"
-  >
-</div>
+<main>
 
-<section id="rehberler">
-  <h2>🔥 Popüler Rehberler</h2>
-
-  <div class="games" id="games">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600"
-      alt="Oyun ekipmanı">
-      <div class="card-content">
-        <h3>GTA 6 Rehberi</h3>
-        <p>Karakterler, görevler ve oyun dünyası hakkında bilgiler.</p>
-        <button onclick="alert('GTA 6 rehberi yakında!')">
-          Rehberi İncele
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600"
-      alt="Oyun bilgisayarı">
-      <div class="card-content">
-        <h3>Oyun İpuçları</h3>
-        <p>Oyuncular için taktikler ve faydalı bilgiler.</p>
-        <button onclick="alert('İpuçları yakında!')">
-          İncele
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=600"
-      alt="Oyun dünyası">
-      <div class="card-content">
-        <h3>Oyun Haritaları</h3>
-        <p>Oyun dünyalarını keşfet ve önemli noktaları öğren.</p>
-        <button onclick="alert('Haritalar yakında!')">
-          Haritaları Gör
-        </button>
-      </div>
-    </div>
-
+<section class="hero">
+  <span class="tag">OYUNUN YENİ MERKEZİ</span>
+  <h1>KEŞFET. OYNA.<br><span class="gradient">ZİRVEYE ÇIK.</span></h1>
+  <p>
+    Oyun dünyasını keşfetmeye hazır mısın?
+    Rehberler, taktikler, ipuçları ve çok daha fazlası PlayHub'da seni bekliyor.
+  </p>
+  <div class="hero-buttons">
+    <a href="#oyunlar" class="btn btn-primary">Oyunları Keşfet</a>
+    <a href="#hakkimizda" class="btn btn-outline">PlayHub Hakkında</a>
   </div>
 </section>
 
-<section id="hakkinda">
-  <h2>PlayHub Nedir?</h2>
-  <p>
-    PlayHub, oyuncular için hazırlanmış bağımsız bir oyun rehberi
-    platformudur. Amacımız oyunları keşfetmeni kolaylaştırmak.
-  </p>
+<section class="section" id="oyunlar">
+  <div class="section-heading">
+    <small>OYUN KÜTÜPHANESİ</small>
+    <h2>Oyununu <span class="gradient">Seç</span></h2>
+    <p>Rehberini bul, yeni taktikler öğren ve maceraya başla.</p>
+  </div>
+
+  <div class="search-area">
+    <input id="gameSearch" type="search" placeholder="Oyun ara...">
+  </div>
+
+  <div class="filters">
+    <button class="filter active" data-filter="all">Tümü</button>
+    <button class="filter" data-filter="survival">Hayatta Kalma</button>
+    <button class="filter" data-filter="action">Aksiyon</button>
+    <button class="filter" data-filter="upcoming">Yakında</button>
+  </div>
+
+  <div class="games" id="gameList">
+
+    <article class="game-card" data-category="survival" data-name="minecraft">
+      <div class="game-art minecraft-art"></div>
+      <div class="game-content">
+        <div class="game-top">
+          <h3>Minecraft</h3>
+          <span class="status">Rehber hazır</span>
+        </div>
+        <p>
+          Bloklardan oluşan dünyanı keşfet. Kaynak topla,
+          yapılar inşa et ve hayatta kal.
+        </p>
+        <button class="btn btn-primary" onclick="openGuide('minecraft')">
+          Minecraft Rehberini Aç
+        </button>
+      </div>
+    </article>
+
+    <article class="game-card" data-category="upcoming action" data-name="gta 6 grand theft auto vi">
+      <div class="game-art gta-art"></div>
+      <div class="game-content">
+        <div class="game-top">
+          <h3>GTA 6</h3>
+          <span class="status soon">Rehber hazırlanacak</span>
+        </div>
+        <p>
+          GTA 6 için PlayHub rehberi burada yerini aldı.
+          Oyunla ilgili rehberlerimiz hazırlandığında bu bölüm güncellenecek.
+        </p>
+        <button class="btn btn-outline" onclick="openGuide('gta')">
+          GTA 6 Sayfasını Gör
+        </button>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="no-results" id="noResults">
+    Aradığın oyun bulunamadı.
+  </div>
 </section>
 
+<section class="section" id="ozellikler">
+  <div class="section-heading">
+    <small>PLAYHUB DENEYİMİ</small>
+    <h2>Neler <span class="gradient">Sunuyoruz?</span></h2>
+    <p>Oyun deneyimini geliştirecek içerikler tek yerde.</p>
+  </div>
+
+  <div class="features">
+    <div class="feature">
+      <div class="symbol">📘</div>
+      <h3>Oyun Rehberleri</h3>
+      <p>Oyunları daha iyi anlamana yardımcı olacak başlangıç ve ilerleme rehberleri.</p>
+    </div>
+
+    <div class="feature">
+      <div class="symbol">⚔️</div>
+      <h3>Taktikler</h3>
+      <p>Zorlu görevler, düşmanlar ve oyun içi mücadeleler için faydalı ipuçları.</p>
+    </div>
+
+    <div class="feature">
+      <div class="symbol">🌍</div>
+      <h3>Keşif</h3>
+      <p>Oyun dünyaları, biyomlar, eşyalar ve keşfedilecek yeni yerler.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="hakkimizda">
+  <div class="section-heading">
+    <small>BİZ KİMİZ?</small>
+    <h2>PlayHub <span class="gradient">Hakkında</span></h2>
+  </div>
+
+  <div class="about">
+    <p>
+      PlayHub, oyuncular için hazırlanmış bağımsız bir oyun rehberi platformudur.
+      Amacımız oyun severlerin aradıkları bilgilere kolayca ulaşmasını sağlamak.
+      Yeni rehberler, oyunlar ve içeriklerle platformumuzu geliştirmeye devam edeceğiz.
+    </p>
+    <br>
+    <p>
+      PlayHub bağımsız bir hayran projesidir. Herhangi bir oyun şirketiyle
+      resmî bağlantısı veya ortaklığı bulunmamaktadır. Oyun adları ve ilgili
+      markalar kendi hak sahiplerine aittir.
+    </p>
+  </div>
+</section>
+
+</main>
+
 <footer>
-  © 2026 PlayHub | Bağımsız Oyun Rehberi
+  <p>© 2026 <strong>PlayHub</strong> — Oyun dünyasının buluşma noktası.</p>
+  <p>Bağımsız oyun rehberi platformu.</p>
 </footer>
 
-<script>
-function searchCards() {
-  const query = document.getElementById("search")
-    .value.toLowerCase();
+<!-- REHBER PENCERESİ -->
+<div class="modal" id="guideModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <button class="close" onclick="closeGuide()" aria-label="Kapat">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
 
-  document.querySelectorAll(".card").forEach(card => {
-    card.style.display =
-      card.innerText.toLowerCase().includes(query)
-      ? "block"
-      : "none";
-  });
+<script>
+const guides = {
+  minecraft: `
+    <h2 id="modalTitle">⛏ Minecraft Rehberi</h2>
+    <p>Minecraft dünyasına hoş geldin! İşte macerana başlamak için temel bilgiler.</p>
+
+    <h3>1. İlk Gün Ne Yapmalısın?</h3>
+    <ul>
+      <li>Çevrendeki ağaçlardan odun topla.</li>
+      <li>Odunları işleyerek tahta ve çalışma masası hazırla.</li>
+      <li>Taş aletler yapmak için taş kaz.</li>
+      <li>Gece olmadan küçük bir barınak oluştur.</li>
+      <li>Yiyecek bul ve karakterinin açlık seviyesine dikkat et.</li>
+    </ul>
+
+    <h3>2. Hayatta Kalma İpuçları</h3>
+    <ul>
+      <li>Mağaralara hazırlıksız girme.</li>
+      <li>Yanında meşale, yiyecek ve yedek kazma bulundur.</li>
+      <li>Değerli eşyalarını güvenli bir sandıkta sakla.</li>
+      <li>Lav bulunan alanlarda dikkatli hareket et.</li>
+      <li>Yatak kullanarak geceyi atlatabilir ve doğma noktanı ayarlayabilirsin.</li>
+    </ul>
+
+    <h3>3. Temel Üretim Tarifleri</h3>
+    <ul>
+      <li><b>Tahta:</b> Kütükleri üretim alanında işle.</li>
+      <li><b>Çalışma Masası:</b> 4 tahta bloğu kullan.</li>
+      <li><b>Çubuk:</b> 2 tahtayı dikey şekilde yerleştir.</li>
+      <li><b>Meşale:</b> Kömür veya odun kömürü ile çubuğu birleştir.</li>
+      <li><b>Fırın:</b> 8 kırık taşı çalışma masasında kenarlara yerleştir.</li>
+    </ul>
+
+    <h3>4. Oyun Modları</h3>
+    <ul>
+      <li><b>Survival:</b> Kaynak topla ve hayatta kal.</li>
+      <li><b>Creative:</b> Sınırsız yapı malzemeleriyle inşa et.</li>
+      <li><b>Adventure:</b> Özel hazırlanmış maceraları oyna.</li>
+      <li><b>Spectator:</b> Dünyayı gözlemle.</li>
+    </ul>
+
+    <h3>5. İlerleyen Aşamalar</h3>
+    <ul>
+      <li>Demir zırh ve araçlar üret.</li>
+      <li>Elmas aramak için uygun derinliklerde madencilik yap.</li>
+      <li>Nether portalı kurmak için obsidyen elde et.</li>
+      <li>End boyutuna hazırlan ve Ender Dragon mücadelesini araştır.</li>
+    </ul>
+
+    <div class="guide-note">
+      💡 İpucu: İlk dünyanda acele etme. Önce güvenli bir üs kur,
+      yiyecek ve temel araçlarını hazırla.
+    </div>
+  `,
+
+  gta: `
+    <h2 id="modalTitle">🚘 GTA 6 — PlayHub</h2>
+    <p>GTA 6 için özel sayfamız açıldı. Bu bölüm, oyunla ilgili rehber içerikleri hazırlandıkça güncellenecek.</p>
+
+    <h3>Bu sayfada neler olacak?</h3>
+    <ul>
+      <li>Oyun dünyası ve şehir rehberi</li>
+      <li>Görevler ve ilerleme ipuçları</li>
+      <li>Araçlar ve ulaşım rehberi</li>
+      <li>Karakterler hakkında bilgiler</li>
+      <li>Keşfedilecek yerler ve sırlar</li>
+      <li>Oyun mekanikleri ve taktikler</li>
+    </ul>
+
+    <div class="guide-note">
+      🚧 GTA 6 rehberi hazırlanma aşamasında.
+      Doğrulanmamış görev, harita veya oyun içi özellik bilgileri paylaşmıyoruz.
+      Yeni bilgiler geldikçe bu sayfa güncellenecek.
+    </div>
+  `
+};
+
+function openGuide(game) {
+  const content = guides[game];
+  if (!content) return;
+
+  document.getElementById('modalContent').innerHTML = content;
+  document.getElementById('guideModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
+
+function closeGuide() {
+  document.getElementById('guideModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('guideModal').addEventListener('click', function(event) {
+  if (event.target === this) closeGuide();
+});
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') closeGuide();
+});
+
+// Oyun arama ve filtreleme
+const searchInput = document.getElementById('gameSearch');
+const cards = [...document.querySelectorAll('.game-card')];
+const filterButtons = [...document.querySelectorAll('.filter')];
+let activeFilter = 'all';
+
+function filterGames() {
+  const query = searchInput.value.toLocaleLowerCase('tr').trim();
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    const name = card.dataset.name.toLocaleLowerCase('tr');
+    const category = card.dataset.category;
+    const matchesSearch = name.includes(query);
+    const matchesFilter = activeFilter === 'all' ||
+      category.split(' ').includes(activeFilter);
+
+    const visible = matchesSearch && matchesFilter;
+    card.style.display = visible ? '' : 'none';
+
+    if (visible) visibleCount++;
+  });
+
+  document.getElementById('noResults').style.display =
+    visibleCount === 0 ? 'block' : 'none';
+}
+
+searchInput.addEventListener('input', filterGames);
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    filterButtons.forEach(item => item.classList.remove('active'));
+    button.classList.add('active');
+    activeFilter = button.dataset.filter;
+    filterGames();
+  });
+});
 </script>
 
 </body>
 </html>
+
